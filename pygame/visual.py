@@ -8,22 +8,22 @@ clock = pygame.time.Clock()
 game_active = True
 
 #Load image 
-sky = pygame.image.load("graphics/sky.png").convert_alpha()
+sky = pygame.image.load("pygame/graphics/sky.png").convert_alpha()
 #Scale images to fit window
 sky = pygame.transform.scale(sky, (800, 300))
 #Make the rectangle
 sky_rect = sky.get_rect(midtop = (400, 0))
 
-ground = pygame.image.load("graphics/ground.png").convert_alpha()
+ground = pygame.image.load("pygame/graphics/ground.png").convert_alpha()
 ground = pygame.transform.scale(ground, (800, 100))
 ground_rect = ground.get_rect(midbottom = (400,400))
 
-ghost = pygame.image.load("graphics/ghost.png").convert_alpha()
-ghost = pygame.transform.scale(ghost, (60, 60))
+ghost = pygame.image.load("pygame/graphics/ghost.png").convert_alpha()
+ghost = pygame.transform.scale(ghost, (40, 40))
 ghost_rect = ghost.get_rect()
 ghost_rect.midbottom = ground_rect.midtop
 
-player = pygame.image.load("graphics/player.png").convert_alpha()
+player = pygame.image.load("pygame/graphics/player.png").convert_alpha()
 player = pygame.transform.scale(player, (45, 65))
 player_rect = player.get_rect()
 player_rect.bottom = ground_rect.top
@@ -54,6 +54,7 @@ while True:
             if event.key == pygame.K_r and game_active == False:  # Restart when pressing R
                 game_active = True
                 ghost_rect.x = 830
+                player_rect.bottom = ground_rect.top
 
     if game_active:
         keys = pygame.key.get_pressed()
