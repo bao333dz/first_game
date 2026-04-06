@@ -5,7 +5,7 @@ A fun Pygame-based game where you control a player character and shoot lines to 
 ## Features
 
 - **Player Control**: Move left (A) and right (D), jump with Space or Up Arrow
-- **Shooting Mechanic**: Click and drag to draw a line that destroys ghosts on contact
+- **Shooting Mechanic**: Click to draw a line that destroys ghosts on contact
 - **Pause System**: Press P to pause/resume the game
 - **Score Tracking**: Keep track of how many ghosts you've eliminated
 - **Game Over**: Game ends when a ghost reaches you
@@ -42,7 +42,7 @@ python pygame/visual.py
 | A | Move left |
 | D | Move right |
 | Space / Up Arrow | Jump |
-| Left Click + Drag | Shoot line to destroy ghosts |
+| Left Click | Shoot line to destroy ghosts |
 | P | Pause/Resume |
 | R | Restart (when game over) |
 
@@ -50,7 +50,7 @@ python pygame/visual.py
 
 1. Avoid the ghosts moving from right to left
 2. Use your jumping mechanics to dodge incoming ghosts
-3. Click and drag to shoot lines and eliminate ghosts
+3. Click to shoot lines and eliminate ghosts
 4. Each ghost eliminated increases your score
 5. Don't let a ghost catch you - game over!
 

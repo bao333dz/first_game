@@ -55,21 +55,23 @@ while True:
                 game_active = True
                 ghost_rect.x = 830
                 player_rect.midbottom = ground_rect.midtop
+                score = 0
             if event.key == pygame.K_p:
                 pause = not pause
 
     if pause:
+        screen.fill("Black")
         # Draw pause screen
         game_over_text = game_over_font.render("Game Paused", True, "Red")
         game_over_rect = game_over_text.get_rect(center=(400, 100))
         screen.blit(game_over_text, game_over_rect)
         
         restart_text = restart_font.render("Press P to Continue", True, "White")
-        restart_rect = restart_text.get_rect(center=(400, 250))
+        restart_rect = restart_text.get_rect(center=(400, 200))
         screen.blit(restart_text, restart_rect)
 
         score_text = score_font.render(f"Score: {score}", True, "White")
-        score_rect = score_text.get_rect(topleft=(10, 10))
+        score_rect = score_text.get_rect(center=(400, 20))
         screen.blit(score_text, score_rect)
 
     elif game_active:
@@ -82,7 +84,8 @@ while True:
 
         #If run out of screen, teleport back
         ghost_rect.left -= 1
-        if ghost_rect.left < -80: ghost_rect.left = 780
+        if ghost_rect.left < -80:
+            ghost_rect.left = 780
 
         #Display the regular surface on the display surface
         screen.blit(ground, ground_rect)
@@ -94,7 +97,12 @@ while True:
         #Player
         player_gravity += 1
         player_rect.y += player_gravity
-        if player_rect.bottom >= 300: player_rect.bottom = 300
+        if player_rect.bottom >= 300:
+            player_rect.bottom = 300
+        if player_rect.left <= 0:
+            player_rect.left = 1
+        if player_rect.right >= 800:
+            player_rect.right = 799
         screen.blit(player, player_rect)
 
         #This is to get the mouse postition and drawn the line and imediately erase it
@@ -116,18 +124,20 @@ while True:
         score_rect = score_text.get_rect(topleft=(10, 10))
         screen.blit(score_text, score_rect)
     else:
+        screen.fill("Black")
         # Draw game over screen
         game_over_text = game_over_font.render("Game Over", True, "Red")
         game_over_rect = game_over_text.get_rect(center=(400, 100))
         screen.blit(game_over_text, game_over_rect)
         
         restart_text = restart_font.render("Press R to Restart", True, "White")
-        restart_rect = restart_text.get_rect(center=(400, 250))
+        restart_rect = restart_text.get_rect(center=(400, 200))
         screen.blit(restart_text, restart_rect)
 
         score_text = score_font.render(f"Score: {score}", True, "White")
-        score_rect = score_text.get_rect(topleft=(10, 10))
+        score_rect = score_text.get_rect(center=(400, 20))
         screen.blit(score_text, score_rect)
+
 
 
     #Update stuff to the screen
