@@ -60,7 +60,6 @@ while True:
                 pause = not pause
 
     if pause:
-        screen.fill("Black")
         # Draw pause screen
         game_over_text = game_over_font.render("Game Paused", True, "Red")
         game_over_rect = game_over_text.get_rect(center=(400, 100))
@@ -69,10 +68,6 @@ while True:
         restart_text = restart_font.render("Press P to Continue", True, "White")
         restart_rect = restart_text.get_rect(center=(400, 200))
         screen.blit(restart_text, restart_rect)
-
-        score_text = score_font.render(f"Score: {score}", True, "White")
-        score_rect = score_text.get_rect(center=(400, 20))
-        screen.blit(score_text, score_rect)
 
     elif game_active:
         keys = pygame.key.get_pressed()
